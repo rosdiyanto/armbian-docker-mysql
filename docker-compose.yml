@@ -1,0 +1,16 @@
+services:
+  mysql:
+    build: .
+    container_name: mysql-container
+    environment:
+      MYSQL_ROOT_PASSWORD: ayamjago  # Ganti dengan password root yang kamu inginkan
+    ports:
+      - "3306:3306"  # Membuka port 3306 agar bisa diakses dari luar container
+    volumes:
+      - mysql-data:/var/lib/mysql  # Menyimpan data MySQL agar tetap ada walau container di-restart
+    restart: always
+
+volumes:
+  mysql-data:
+    name: mysql-data  # Mendeklarasikan nama volume secara eksplisit
+    driver: local
